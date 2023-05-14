@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "v1/spending")
 @AllArgsConstructor
@@ -17,7 +19,13 @@ public class SpendingController {
     SpendingService spendingService;
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Spending addNewSpending(@RequestBody Spending spending){
+    public Spending addNewSpending(@RequestBody Spending spending) {
         return spendingService.addNewSpending(spending);
     }
+
+    @PostMapping(path= "/add-multiple", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public List<Spending> addMultipleNewSpending(@RequestBody List<Spending> spendings) {
+        return spendingService.addMultipleNewSpending(spendings);
+    }
+
 }
