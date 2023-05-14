@@ -1,0 +1,13 @@
+spring:
+  jpa:
+    show-sql: true
+  data:
+    mongodb:
+      auto-index-creation: true
+      host: localhost
+      port: 27017
+      database: spending
+  datasource:
+    username: root
+    password: password
+    url: jdbc:mysql://127.0.0.1:13306/spending
