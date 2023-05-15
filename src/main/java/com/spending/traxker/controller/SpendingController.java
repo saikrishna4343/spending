@@ -4,12 +4,10 @@ import com.spending.traxker.dto.Spending;
 import com.spending.traxker.service.SpendingService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "v1/spending")
@@ -27,5 +25,11 @@ public class SpendingController {
     public List<Spending> addMultipleNewSpending(@RequestBody List<Spending> spendings) {
         return spendingService.addMultipleNewSpending(spendings);
     }
+
+    @GetMapping(path = "/getbyid")
+    public Spending getBySpendingId(@RequestParam(name = "spendingId") UUID spendingId){
+        return spendingService.getBySpendingId(spendingId);
+    }
+
 
 }

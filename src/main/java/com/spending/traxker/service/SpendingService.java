@@ -33,6 +33,13 @@ public class SpendingService {
 
     }
 
+    public Spending getBySpendingId(UUID spendingId){
+        SpendingEntity spendingEntity = spendingRepository.findBySpendingId(spendingId);
+        return SpendingFunctions.fromEntity.apply(spendingEntity);
+    }
+
+
+
     public Spending addUUIDAndDate (Spending spending){
         spending.setSpendingId(UUID.randomUUID());
         spending.setPaymentDate(ZonedDateTime.now());
